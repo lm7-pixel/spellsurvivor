@@ -5,8 +5,8 @@ render_mode blend_mix;
 uniform float hit = 0.0;
 
 // Varyings
-uniform vec2 offset = vec2(30.0, 30.0);
-uniform vec4 modulate : source_color = vec4(0, 0, 1, 1);
+uniform vec2 offset = vec2(20.0, 20.0);
+uniform vec4 modulate : source_color = vec4(0, 0, 0, 0.5);
 
 void fragment() {
 	vec4 col = texture(TEXTURE, UV);

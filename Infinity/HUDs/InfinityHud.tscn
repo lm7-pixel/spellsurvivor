@@ -1,14 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://dndrw60tkxjwx"]
+[gd_scene load_steps=21 format=3 uid="uid://dndrw60tkxjwx"]
 
 [ext_resource type="Shader" path="res://Infinity/HUDs/BG/bg.gdshader" id="1_1dqes"]
 [ext_resource type="Texture2D" uid="uid://3g3bdtsmnid1" path="res://Infinity/HUDs/BG/bg_city_b.2k.png" id="2_4oonj"]
 [ext_resource type="Texture2D" uid="uid://136bqyejq4xa" path="res://Infinity/HUDs/BG/bg_city_a.2k.png" id="3_se5fq"]
 [ext_resource type="Texture2D" uid="uid://dge21nhsqkxnq" path="res://Infinity/HUDs/BG/bg_tile_a.png" id="4_uqdg2"]
 [ext_resource type="Texture2D" uid="uid://c0jusf0iejowu" path="res://Infinity/HUDs/BG/ninepatch_border.png" id="5_48qdi"]
+[ext_resource type="Texture2D" uid="uid://bj20umlgdy7ms" path="res://Infinity/HUDs/BG/BGground.png" id="5_gqyx3"]
 [ext_resource type="PackedScene" uid="uid://bali3cj5bhs2q" path="res://Infinity/HUDs/InGameHUD.tscn" id="6_fbv8a"]
+[ext_resource type="Texture2D" uid="uid://chdmvm3txlai" path="res://Infinity/HUDs/BG/BGground_n.png" id="6_tcjcw"]
 [ext_resource type="PackedScene" uid="uid://cn70mo64dy7mh" path="res://Infinity/HUDs/BattleResult/BattleResultHUD.tscn" id="7_7iy48"]
+[ext_resource type="Texture2D" uid="uid://dk60ovyc8jf54" path="res://Infinity/HUDs/BG/BGground_R.png" id="7_dpyns"]
 [ext_resource type="PackedScene" uid="uid://dvwlkv2f4pl2i" path="res://Infinity/HUDs/Shop/ShopHUD.tscn" id="8_an48t"]
+[ext_resource type="Texture2D" uid="uid://d0qijk0b6fxm1" path="res://Infinity/HUDs/BG/BGgroundparts.png" id="8_xlufy"]
 [ext_resource type="PackedScene" uid="uid://cwjfqs0u6t7wi" path="res://Infinity/HUDs/TooltipToast.tscn" id="9_n1574"]
+[ext_resource type="Texture2D" uid="uid://doyfrbs4a030j" path="res://Infinity/HUDs/BG/BGgroundparts_r.png" id="9_vy83n"]
 [ext_resource type="PackedScene" uid="uid://dh7nt37deh6b1" path="res://Common/Debugging/DebugHUD.tscn" id="10_orxi8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l71ky"]
@@ -19,6 +24,15 @@ shader = ExtResource("1_1dqes")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cnscl"]
 shader = ExtResource("1_1dqes")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_82ub8"]
+diffuse_texture = ExtResource("5_gqyx3")
+normal_texture = ExtResource("6_tcjcw")
+specular_texture = ExtResource("7_dpyns")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_a6yve"]
+diffuse_texture = ExtResource("8_xlufy")
+specular_texture = ExtResource("9_vy83n")
 
 [node name="InfinityHud" type="Node"]
 
@@ -94,6 +108,21 @@ position = Vector2(422, 453)
 rotation = -3.14159
 scale = Vector2(0.667, 0.667)
 texture = ExtResource("4_uqdg2")
+
+[node name="Sprite2D" type="Sprite2D" parent="BG Tile (-4)"]
+light_mask = 5
+visibility_layer = 5
+scale = Vector2(0.3, 0.3)
+texture = SubResource("CanvasTexture_82ub8")
+
+[node name="Sprite2D_8" type="Sprite2D" parent="BG Tile (-4)"]
+modulate = Color(0.647395, 0.647395, 0.647395, 1)
+light_mask = 5
+visibility_layer = 5
+z_index = 180
+z_as_relative = false
+scale = Vector2(0.3, 0.3)
+texture = SubResource("CanvasTexture_a6yve")
 
 [node name="UI Border (2)" type="CanvasLayer" parent="."]
 layer = 2

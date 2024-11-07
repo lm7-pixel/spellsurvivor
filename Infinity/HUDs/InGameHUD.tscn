@@ -1,10 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bali3cj5bhs2q"]
+[gd_scene load_steps=18 format=3 uid="uid://bali3cj5bhs2q"]
 
 [ext_resource type="Script" path="res://Infinity/HUDs/InGameHUD.cs" id="1_6o03e"]
 [ext_resource type="Texture2D" uid="uid://cxvitewt46k05" path="res://Common/Resources/Textures/white_4x4_srgb.png" id="2_l31n5"]
+[ext_resource type="Texture2D" uid="uid://pthn1wfeoawh" path="res://Infinity/HUDs/HUDtexture/tabletframe.png" id="3_aw4ox"]
 [ext_resource type="PackedScene" uid="uid://bycglxvkrnadg" path="res://Infinity/HUDs/InGameEquipment.tscn" id="4_1mss2"]
 [ext_resource type="FontFile" uid="uid://b13jmbc8o7ebo" path="res://Common/Resources/Fonts/Verdana.ttf" id="4_hsb5i"]
+[ext_resource type="Texture2D" uid="uid://b1mwh8vmydo17" path="res://Infinity/HUDs/HUDtexture/tabletparts.png" id="4_p7hrx"]
+[ext_resource type="Texture2D" uid="uid://d0p0eav0q18u2" path="res://Infinity/HUDs/HUDtexture/hudwindow.png" id="5_2khiy"]
 [ext_resource type="PackedScene" uid="uid://28gdcb4eskv" path="res://Infinity/HUDs/ActiveFactionHud.tscn" id="5_26dji"]
+[ext_resource type="Shader" path="res://Infinity/HUDs/PostProcess/crt.gdshader" id="6_0gn2p"]
+[ext_resource type="Shader" path="res://Infinity/HUDs/PostProcess/pixelate.gdshader" id="6_hpu2f"]
+[ext_resource type="Texture2D" uid="uid://cam68dd5ujbsv" path="res://Infinity/HUDs/HUDtexture/sr71.png" id="6_xf0ba"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntlvd"]
 font = ExtResource("4_hsb5i")
@@ -23,6 +29,18 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyady"]
 bg_color = Color(0.427493, 0.427493, 0.427493, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_do6m8"]
+shader = ExtResource("6_hpu2f")
+shader_parameter/pixel_size = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxlfc"]
+shader = ExtResource("6_0gn2p")
+shader_parameter/crt_brightness = 1.732
+shader_parameter/crt_ghost = 1.587
+shader_parameter/crt_grid = 0.088
+shader_parameter/crt_white_noise = 0.0
+shader_parameter/crt_curve = 0.02
 
 [node name="InGameHUD" type="CanvasLayer" node_paths=PackedStringArray("_healthBar", "_healthText", "_currentWaveLabel", "_waveTimerLabel", "_equipmentContainer")]
 script = ExtResource("1_6o03e")
@@ -137,3 +155,41 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gyady")
 [node name="CurrentEquipment HUD Parent" type="HBoxContainer" parent="Container/Panel"]
 layout_mode = 2
 alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D_3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(790, 443)
+scale = Vector2(0.297, 0.297)
+texture = ExtResource("3_aw4ox")
+
+[node name="Sprite2D_4" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(781, 828)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("4_p7hrx")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(799, 434)
+scale = Vector2(0.29131, 0.29131)
+texture = ExtResource("5_2khiy")
+
+[node name="Sprite2D_2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1390, 646)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_xf0ba")
+
+[node name="ColorRect_2" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_do6m8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_kxlfc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

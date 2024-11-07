@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Infinity/Weapons/SniperRifle.cs" id="1_4mwl3"]
 [ext_resource type="PackedScene" uid="uid://ceuw4y35vfqm1" path="res://Infinity/Projectiles/(Projectile) SparkBolt.tscn" id="2_gpmga"]
 [ext_resource type="Script" path="res://Infinity/Weapons/AimToNearEnemy.cs" id="3_hpiyo"]
-[ext_resource type="Texture2D" uid="uid://c2edxtyae4q6n" path="res://Common/Resources/Textures/Emoji/hocho.png" id="4_lek6r"]
+[ext_resource type="Texture2D" uid="uid://dysfoq23lx45h" path="res://Common/Resources/Textures/firearm/gm6.png" id="4_tfw56"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_33fx5"]
 radius = 500.0
@@ -23,9 +23,9 @@ Target = 1
 [node name="SpriteRoot" type="Node2D" parent="AimToNearEnemy"]
 
 [node name="Sprite" type="Sprite2D" parent="AimToNearEnemy/SpriteRoot"]
-position = Vector2(23, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_lek6r")
+position = Vector2(12, -2)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_tfw56")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AimToNearEnemy"]
 shape = SubResource("CircleShape2D_33fx5")
